@@ -26,6 +26,9 @@ module.exports = {
           hover: "#967142",
         },
       },
+      backgroundImage: {
+        room: "url('/room.jpg')",
+      },
     },
   },
   plugins: [],

@@ -1,0 +1,31 @@
+<header class="header">
+  <div
+    [ngClass]="{'bg-white py-6 shadow-lg': header, 'bg-transparent py-8': !header, 'fixed z-50 w-full transition-all duration-500': true}"
+  >
+    <div class="container mx-auto flex flex-col items-center gap-y-6 lg:flex-row lg:justify-between lg:gap-y-0">
+      <a href="/">
+          <img *ngIf="header" src="/logo-dark.svg" alt="header logo" class="w-[160px]" />
+          <img *ngIf="!header" src="/logo-white.svg" alt="header logo" class="w-[160px]" />
+      </a>
+      <div [ngClass]="header ? 'text-primary' : 'text-white'">
+        <ul class="flex items-center gap-x-6 font-tertiary text-[15px] uppercase tracking-[1.5px] lg:gap-x-8">
+          <a href="/about" class="transition hover:text-accent">
+            About
+          </a>
+          <a href="/rooms" class="transition hover:text-accent">
+            Rooms
+          </a>
+          <a href="/restaurants" class="transition hover:text-accent">
+            Restaurants
+          </a>
+          <a href="/spa" class="transition hover:text-accent">
+            Spa
+          </a>
+          <a href="/contact" class="transition hover:text-accent">
+            Contact
+          </a>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
