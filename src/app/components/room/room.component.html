@@ -1,0 +1,46 @@
+<div class="group min-h-[500px] bg-white shadow-2xl">
+  <div class="overflow-hidden">
+    <img
+      [src]="room.image"
+      alt="room image"
+      class="w-full transition-all duration-300 group-hover:scale-110"
+    />
+  </div>
+  <div class="mx-auto flex h-[60px] max-w-[300px] -translate-y-1/2 items-center justify-center bg-white font-tertiary text-base font-semibold uppercase tracking-[1px] shadow-lg">
+    <div class="flex w-[80%] items-center justify-between">
+      <div class="flex items-center gap-2">
+        <div class="text-accent">
+          <fa-icon [icon]="faMaximize" class="text-[15px]"></fa-icon>
+        </div>
+
+        <div class="flex items-center gap-1">
+          <div>size</div>
+          <div>{{room.size}}m2</div>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <div class="text-accent">
+          <fa-icon [icon]="faPeopleGroup" class="text-[18px]"></fa-icon>
+        </div>
+
+        <div class="flex items-center gap-1">
+          <div>max people</div>
+          <div>{{room.maxPerson}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center">
+    <a [routerLink]="['/rooms', room.id]">
+      <h3 class="h3">{{room.name}}</h3>
+    </a>
+    <p class="mx-auto mb-3 max-w-[300px] lg:mb-6">
+      {{room.description.slice(0, 56)}}
+    </p>
+  </div>
+  <a
+    [routerLink]="['/rooms', room.id]"
+    class="btn btn-secondary btn-sm mx-auto max-w-[240px]">
+    Book now from ${{room.price}}
+  </a>
+</div>
