@@ -13,7 +13,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { RoomComponent } from '../room/room.component';
 
-const roomData = [
+export const roomData = [
   {
     id: 1,
     name: 'Superior Room',

@@ -1,0 +1,82 @@
+<section>
+  <div class="relative flex h-[560px] items-center justify-center bg-room bg-cover bg-center">
+    <div class="absolute top-0 left-0 h-full w-full bg-black/50">
+    </div>
+    <h1 class="z-20 text-center font-primary text-6xl text-white">
+      {{(room$ | async)?.name}} Details
+    </h1>
+  </div>
+  <div class="container mx-auto">
+    <div class="flex h-full flex-col py-24 lg:flex-row">
+      <div class="h-full w-full px-6 lg:w-[60%]">
+        <h2 class="h2">{{(room$ | async )?.name}}</h2>
+        <p class="mb-8">{{(room$ | async)?.description}}</p>
+        <img [src]="(room$ | async)?.imageLg" alt="room details image" class="mb-8" />
+        <div class="mt-12">
+          <h3 class="h3 mb-3">Room Facilities</h3>
+          <p class="mb-12">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero,
+            adipisci aspernatur, nisi dolores iste perferendis similique
+            praesentium ullam tempore porro incidunt, facere commodi. Porro
+            voluptatem voluptatibus sit, culpa saepe nostrum.
+          </p>
+
+          <div class="mb-12 grid grid-cols-3 gap-6">
+            <ng-container *ngFor="let faculty of (room$ | async)?.facilities; index as i">
+              <div
+                key={index}
+                class="flex flex-1 items-center gap-x-3"
+              >
+                <fa-icon [icon]="faculty.icon" class="text-2xl text-accent"></fa-icon>
+                <div class="text-base">{{faculty.name}}</div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <div class="h-full w-full lg:w-[40%]">
+        <div class="mb-12 bg-accent/20 py-8 px-6">
+          <div class="mb-4 flex flex-col space-y-4">
+            <h3>Your Reservation</h3>
+
+            <app-date-picker placeholder="Check in"></app-date-picker>
+            <app-date-picker placeholder="Check out"></app-date-picker>
+            
+            <app-people-picker placeholder="Adults"></app-people-picker>
+            <app-people-picker placeholder="No Kids"></app-people-picker>
+          </div>
+
+          <button class="btn btn-lg btn-primary w-full">
+            Book now from ${{(room$ | async)?.price}}
+          </button>
+        </div>
+        <div>
+          <h3 class="h3">Hotel Rules</h3>
+          <p class="mb-6">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            Sapiente, aliquid modi. Sed laudantium unde distinctio quas,
+            repudiandae fuga veniam tempora, quae nobis quo dicta a.
+          </p>
+          <ul class="flex flex-col gap-y-4">
+            <li class="flex items-center gap-x-4">
+              <fa-icon [icon]="faCheck" class="text-accent"></fa-icon>
+              Check-in: 3:00 PM - 9:00 PM
+            </li>
+            <li class="flex items-center gap-x-4">
+              <fa-icon [icon]="faCheck" class="text-accent"></fa-icon>
+              Check-out: 10:30 AM
+            </li>
+            <li class="flex items-center gap-x-4">
+              <fa-icon [icon]="faCheck" class="text-accent"></fa-icon>
+              No Pets
+            </li>
+            <li class="flex items-center gap-x-4">
+              <fa-icon [icon]="faCheck" class="text-accent"></fa-icon>
+              No Smoking
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
