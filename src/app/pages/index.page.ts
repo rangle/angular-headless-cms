@@ -7,7 +7,10 @@ import { BookFormComponent } from '../components/book-form/book-form.component';
   selector: 'app-home',
   standalone: true,
   imports: [HeroSliderComponent, BookFormComponent, RoomsComponent],
-  template: `<app-hero-slider></app-hero-slider><app-book-form></app-book-form
-    ><app-rooms></app-rooms>`,
+  template: `
+    <app-hero-slider></app-hero-slider>
+    <app-book-form></app-book-form>
+    <app-rooms></app-rooms>
+  `,
 })
 export default class HomeComponent {}
