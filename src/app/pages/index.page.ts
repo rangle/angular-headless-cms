@@ -1,16 +1,23 @@
 import { Component } from '@angular/core';
-import { HeroSliderComponent } from '../components/hero-slider/hero-slider.component';
-import { RoomsComponent } from '../components/rooms/rooms.component';
-import { BookFormComponent } from '../components/book-form/book-form.component';
+import { RenderTemplateComponent } from '../../build-component/build-component.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HeroSliderComponent, BookFormComponent, RoomsComponent],
-  template: `
-    <app-hero-slider></app-hero-slider>
-    <app-book-form></app-book-form>
-    <app-rooms></app-rooms>
-  `,
+  imports: [RenderTemplateComponent],
+  template: `<app-render-template
+    [components]="pageData.children"
+  ></app-render-template>`,
 })
-export default class HomeComponent {}
+export default class HomeComponent {
+  pageData = {
+    children: [
+      {
+        name: 'textContainer',
+        componentData: {
+          text: 'heading!',
+        },
+      },
+    ],
+  };
+}

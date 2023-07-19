@@ -1,0 +1,26 @@
+<div class="relative bg-grey-50 pt-[100px]" [ngClass]="{'after:absolute after:bottom-0 after:block  after:h-28 after:w-full after:bg-gradient-to-t after:from-grey-50 after:content-['']: true}">
+  <img *ngIf="backgroundImage" [src]="backgroundImage" class="absolute inset-0 h-full w-full object-cover opacity-25">
+
+  <div class="container mx-auto">
+    <div class="relative z-10 lg:w-full lg:max-w-lg xl:max-w-xl">
+      <div class="container mx-auto px-4 py-24 sm:px-6 md:py-28 lg:py-40 lg:pl-6 lg:pr-0 xl:pt-48">
+        <div class="sm:text-center lg:text-left">
+          <span *ngIf="eyebrow" class="mb-6 block text-secondary-600">{{ eyebrow }}</span>
+          <h1 *ngIf="heading" class="font-times text-4xl text-primary-700 lg:text-5xl">
+            <span class="block font-bold leading-tight xl:inline">{{ heading }}</span>
+          </h1>
+          <p *ngIf="body" class="mt-4 text-base leading-normal text-primary-700 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 md:text-xl lg:mx-0">
+            {{ body }}
+          </p>
+          <div *ngIf="cta && cta.isEnabled" class="pb-5 pt-10">
+            <!-- Assuming CtaComponent is the Angular equivalent of the Cta React component -->
+            <!-- <app-cta [url]="cta.url" [text]="cta.text" [hasPrimaryCta]="cta.hasPrimaryCta"></app-cta> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="heroImage" class="relative z-10 -mt-24 translate-y-10 transform overflow-hidden pl-10 lg:absolute lg:inset-y-0 lg:bottom-0 lg:left-auto lg:right-0 lg:-mt-10 lg:w-1/2 lg:pt-24 xl:pl-0">
+    <img-box [width]="905" [height]="785" [image]="heroImage" [alt]="heroImageAlt" class="left-slash-16 lg:left-slash-36 h-56 w-full object-cover sm:h-72 md:h-96 lg:h-full lg:w-full"></img-box>
+  </div>
+</div>
