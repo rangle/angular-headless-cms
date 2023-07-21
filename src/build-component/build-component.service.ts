@@ -18,31 +18,28 @@ import {
   DynamicItemConstructor,
 } from '../types/build-component.types';
 
+import { MainHeroComponent } from '../app/components/main-hero/main-hero.component';
+
 type ComponentMap = {
   [name: string]: {
-    loadComponent: () => Promise<DynamicItemConstructor>;
+    loadComponent: () => DynamicItemConstructor;
   };
 };
 
 const _dynamicComponentMap: ComponentMap = {
   // #6 component manifest object
   mainHero: {
-    loadComponent: () =>
-      import('../app/components/main-hero/main-hero.component').then(
-        (m) => m.MainHeroComponent
-      ),
+    loadComponent: () => MainHeroComponent,
   },
 };
 
 const dynamicComponentMap = new Map(Object.entries(_dynamicComponentMap));
-
 @Injectable({ providedIn: 'root' })
 export class DynamicComponentsService {
   constructor(public injector: Injector) {}
 
   async loadComponentConstructor(name: string) {
     const loadedItem = dynamicComponentMap.get(name);
-    console.log('yeee', loadedItem);
 
     if (!loadedItem) {
       throw new Error(`Component not found for: ${name};`);
@@ -56,7 +53,6 @@ export class DynamicComponentsService {
         this.injector
       );
     } else {
-      console.log('#7 standalone', loadedComponentConstructor);
       // stand alone component
       return loadedComponentConstructor;
     }
@@ -67,12 +63,10 @@ export class DynamicComponentsService {
     componentTemplate: ComponentTemplate,
     renderItem: LoadedRenderItem
   ) {
-    console.log('#5 createComponent');
     let componentRef: ComponentRef<any>;
     let resolverData: any;
 
     if (!isComponentConstructor(renderItem)) {
-      console.log('#6 if');
       resolverData =
         renderItem.instance.componentDataResolver &&
         renderItem.instance.componentDataResolver(
@@ -83,7 +77,6 @@ export class DynamicComponentsService {
       });
       // if resolver data found apply to the component
     } else {
-      console.log('#6 else');
       componentRef = container.createComponent(renderItem);
       resolverData =
         componentRef.instance.componentDataResolver &&
@@ -97,6 +90,7 @@ export class DynamicComponentsService {
         (key) => (componentRef.instance[key] = resolverData[key])
       );
     }
+    componentRef.hostView.detectChanges();
 
     container.insert(componentRef.hostView);
     return componentRef;

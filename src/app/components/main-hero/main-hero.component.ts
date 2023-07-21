@@ -10,14 +10,14 @@ import {
   selector: 'app-main-hero',
   imports: [CommonModule],
   standalone: true,
-  // templateUrl: './main-hero.component.html',
-  template: `<p>hello</p>`,
+  templateUrl: './main-hero.component.html',
+  // template: `<p>{{ heading }}</p>`,
 })
 export class MainHeroComponent implements DynamicComponent {
   // backgroundImage?: string;
-  // eyebrow?: string;
+  eyebrow?: string;
   heading: string = '';
-  // body?: string;
+  body?: string;
   // heroImage: string = '';
   // heroImageAlt: string = '';
   // cta?: any; // Adjust the type as per your needs
@@ -27,6 +27,8 @@ export class MainHeroComponent implements DynamicComponent {
   componentDataResolver(data: ComponentData) {
     return {
       heading: data['heading'],
+      body: data['body'],
+      eyebrow: data['eyebrow'],
     };
   }
 }
