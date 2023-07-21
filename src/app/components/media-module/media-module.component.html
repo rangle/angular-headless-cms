@@ -1,0 +1,45 @@
+<div [ngClass]="{'bg-primary-200': isDark, 'bg-grey-100': !isDark}">
+  <div  class="container mx-auto">
+    <div  class="grid grid-cols-1 px-5 py-12 sm:gap-x-5 md:grid-cols-2 md:py-20">
+      <div
+        class="relative mx-auto mb-6 mt-10 h-64 w-64 self-start sm:h-72 sm:w-72 md:mt-0"
+        [ngClass]="{'order-last mt-8': imageOnRight}"
+      >
+        <div
+          class="absolute inset-0 h-64 w-64 translate-x-3 transform sm:h-72 sm:w-72"
+          [ngClass]="{'bg-secondary-300': isDark, 'bg-secondary-600': !isDark}"
+        >
+          <img
+            [src]="image"
+            [alt]="imageAlt"
+             class="absolute inset-0 h-64 w-64 -translate-x-6 translate-y-6 transform sm:h-72 sm:w-72"
+          />
+        </div>
+      </div>
+      <div class="mt-10 flex flex-col justify-center md:mt-0">
+        <h2
+          *ngIf="heading"
+          class="font-times text-2xl font-bold lg:text-3xl"
+          [ngClass]="{'text-grey-50': isDark, 'text-primary-700': !isDark}"
+        >
+          
+        {{heading}}
+        </h2>
+        <div
+          *ngIf="body"
+          class="prose mt-6 text-base"
+          [ngClass]="{'text-grey-50': isDark, 'text-primary-700': !isDark}"
+        >
+          {{body}}
+        </div>
+        <div *ngIf="cta && cta.isEnabled" class="pt-10">
+          <app-cta
+            [url]="cta.url"
+            [text]="cta.text"
+            [hasPrimaryCta]="cta.hasPrimaryCta"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

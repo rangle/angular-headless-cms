@@ -1,4 +1,3 @@
-// import { CtaComponent } from '../cta/cta.component';
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
@@ -8,19 +7,19 @@ import {
 import { CtaComponent } from '../cta/cta.component';
 
 @Component({
-  selector: 'app-main-hero',
+  selector: 'app-media-module',
   imports: [CommonModule, CtaComponent],
   standalone: true,
-  templateUrl: './main-hero.component.html',
+  templateUrl: './media-module.component.html',
 })
-export class MainHeroComponent implements DynamicComponent {
-  // backgroundImage?: string;
-  eyebrow?: string;
-  heading: string = '';
+export class MediaModuleComponent implements DynamicComponent {
   body?: string;
-  heroImage: string = '';
-  heroImageAlt: string = '';
-  cta?: any; // Adjust the type as per your needs
+  cta?: any;
+  heading: string = '';
+  imageAlt: string = '';
+  imageOnRight: boolean = false;
+  image: any;
+  isDark: boolean = false;
 
   constructor() {}
 
@@ -28,10 +27,11 @@ export class MainHeroComponent implements DynamicComponent {
     return {
       heading: data['heading'],
       body: data['body'],
-      eyebrow: data['eyebrow'],
       cta: data['cta'],
-      heroImage: data['heroImage'],
-      heroImageAlt: data['heroImageAlt'],
+      image: data['image'],
+      imageAlt: data['imageAlt'],
+      isDark: data['isDark'],
+      imageOnRight: data['imageOnRight'],
     };
   }
 }

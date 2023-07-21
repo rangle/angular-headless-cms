@@ -25,28 +25,22 @@
               {{body}}
             </p>
           <!-- )} -->
-          <!-- {cta && cta.isEnabled && (
-            <div  class="pb-5 pt-10">
-              <Cta
-                url={cta.url}
-                text={cta.text}
-                hasPrimaryCta={cta.hasPrimaryCta}
-              />
-            </div>
-          )} -->
+          <div *ngIf="cta && cta.isEnabled" class="pb-5 pt-10">
+            <app-cta
+              [url]="cta.url"
+              [text]="cta.text"
+              [hasPrimaryCta]="cta.hasPrimaryCta"
+            />
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <!-- {heroImage && (
-    <div  class="relative z-10 -mt-24 translate-y-10 transform overflow-hidden pl-10 lg:absolute lg:inset-y-0 lg:bottom-0 lg:left-auto lg:right-0 lg:-mt-10 lg:w-1/2 lg:pt-24 xl:pl-0">
-      <ImageBox
-        width={905}
-        height={785}
-        image={heroImage}
-        alt={heroImageAlt}
-         class="left-slash-16 lg:left-slash-36 h-56 w-full object-cover sm:h-72 md:h-96 lg:h-full lg:w-full"
-      />
-    </div>
-  )} -->
+  <div *ngIf="heroImage" class="relative z-10 -mt-24 translate-y-10 transform overflow-hidden pl-10 lg:absolute lg:inset-y-0 lg:bottom-0 lg:left-auto lg:right-0 lg:-mt-10 lg:w-1/2 lg:pt-24 xl:pl-0">
+    <img
+      [src]=[heroImage]
+      [alt]="heroImageAlt"
+        class="left-slash-16 lg:left-slash-36 h-56 w-full object-cover sm:h-72 md:h-96 lg:h-full lg:w-full"
+    />
+  </div>
 </div>

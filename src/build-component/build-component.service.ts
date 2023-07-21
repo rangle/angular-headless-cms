@@ -19,6 +19,7 @@ import {
 } from '../types/build-component.types';
 
 import { MainHeroComponent } from '../app/components/main-hero/main-hero.component';
+import { MediaModuleComponent } from '../app/components/media-module/media-module.component';
 
 type ComponentMap = {
   [name: string]: {
@@ -30,6 +31,9 @@ const _dynamicComponentMap: ComponentMap = {
   // #6 component manifest object
   mainHero: {
     loadComponent: () => MainHeroComponent,
+  },
+  mediaModule: {
+    loadComponent: () => MediaModuleComponent,
   },
 };
 

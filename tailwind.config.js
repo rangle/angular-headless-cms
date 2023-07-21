@@ -2,32 +2,34 @@
 module.exports = {
   content: ["./index.html", "./src/**/*.{html,ts,md}"],
   theme: {
-    fontFamily: {
-      primary: "Gilda Display",
-      secondary: "Barlow",
-      tertiary: "Barlow Condensed",
-    },
-    container: {
-      padding: {
-        DEFAULT: "15px",
-      },
-    },
-    screens: {
-      sm: "640px",
-      md: "768px",
-      lg: "960px",
-      xl: "1140px",
-    },
     extend: {
-      colors: {
-        primary: "#0a0a0a",
-        accent: {
-          DEFAULT: "#a37d4c",
-          hover: "#967142",
-        },
+      fontFamily: {
+        mono: "var(--font-mono)",
+        sans: "var(--font-sans)",
+        serif: "var(--font-serif)",
+        times: "times",
       },
-      backgroundImage: {
-        room: "url('/room.jpg')",
+      colors: {
+        primary: {
+          50: "#B2B8A1",
+          200: "#7C8464",
+          500: "#646B4B",
+          700: "#4B5331",
+        },
+        secondary: {
+          100: "#EFEBE6",
+          300: "#CDA66D",
+          500: "#F3A756",
+          600: "#DF7300",
+        },
+        grey: {
+          50: "#FFFFFF",
+          100: "#F8F8F8",
+          200: "#F1F3F4",
+          300: "#EDEDED",
+          400: "#D9D9D9",
+          500: "#CCCCCC",
+        },
       },
     },
   },

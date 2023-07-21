@@ -1,46 +1,5 @@
 @import "swiper/swiper-bundle.css";
 
-@layer base {
-  body {
-    @apply font-secondary text-primary;
-  }
-  input::placeholder {
-    @apply text-primary;
-  }
-  .h2 {
-    @apply mb-4 font-primary text-[45px];
-  }
-  .h3 {
-    @apply mb-2 font-primary text-2xl font-semibold tracking-[1px];
-  }
-  .btn {
-    @apply flex flex-1 items-center justify-center px-8 font-tertiary text-[15px] uppercase tracking-[3px] text-white transition-all;
-  }
-  .btn-sm {
-    @apply h-[48px];
-  }
-  .btn-lg {
-    @apply h-[60px];
-  }
-  .btn-primary {
-    @apply bg-accent hover:bg-accent-hover;
-  }
-  .btn-secondary {
-    @apply bg-primary hover:bg-accent;
-  }
-  .btn-white {
-    @apply bg-white text-[#0a0a0a];
-  }
-}
-
-::selection {
-  @apply bg-accent text-white;
-}
-
-::-webkit-scrollbar {
-  @apply hidden;
-}
-
 /* Tailwind directives  */
 @tailwind base;
 @tailwind components;

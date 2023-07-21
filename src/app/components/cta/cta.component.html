@@ -1,0 +1,32 @@
+
+
+<a
+  [target]="target"
+  [href]="formattedUrl"
+  *ngIf="hasPrimaryCta"
+  class="cursor-pointer inline-block	rounded-full bg-primary-700 px-6 py-3 text-sm text-grey-50 outline-none hover:bg-primary-500 focus:ring-2 focus:ring-secondary-600 focus:ring-offset-2"
+>
+  <span *ngIf="text">{{text}}</span>
+</a>
+
+<a
+  [target]="target"
+  [href]="formattedUrl"
+  *ngIf="!hasPrimaryCta"
+  class="cursor-pointer text-secondary-600 underline transition hover:text-secondary-500 hover:no-underline"
+>
+  <span *ngIf="text">{{text}}</span>
+  <span>
+      <svg
+        *ngIf="isExternal"
+        xmlns="http://www.w3.org/2000/svg"
+        class="relative ml-1 inline h-4 w-4"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+      >
+        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+      </svg>
+      <span *ngIf="!isExternal"> &#8594;</span>
+  </span>
+</a>
