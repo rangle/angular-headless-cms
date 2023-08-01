@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RenderTemplateComponent } from '../../build-component/build-component.component';
+import { ContentService } from '../services/content.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,6 +10,10 @@ import { RenderTemplateComponent } from '../../build-component/build-component.c
   template: `<app-render-template [components]="pageData.children" />`,
 })
 export default class HomeComponent {
+  private readonly route = inject(Router);
+
+  readonly slug = this.route.url;
+
   pageData = {
     header: 'Dynamic Renderer',
     // #8 array of dynamic components, same as other children arrays
@@ -41,4 +47,25 @@ export default class HomeComponent {
       },
     ],
   };
+
+  constructor(public contentService: ContentService) {
+    this.getPage();
+  }
+
+  getPage() {
+    this.contentService.getPageBySlug(this.slug).subscribe({
+      next: (page) => {
+        //  this.pageData = page.items;
+        console.log(page.items[0]?.fields?.sections);
+        this.pageData = {
+          children: page.items[0]?.fields.sections.map((section) => {
+            return {
+              name: section.sys.contentType.sys.id,
+              componentData: section.fields,
+            };
+          }),
+        };
+      },
+    });
+  }
 }

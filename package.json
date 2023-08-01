@@ -32,6 +32,7 @@
     "@ng-icons/feather-icons": "^25.1.0",
     "@ng-icons/heroicons": "^25.1.0",
     "@nx/angular": "^16.0.0",
+    "contentful": "^10.3.6",
     "front-matter": "^4.0.2",
     "marked": "^5.0.2",
     "prismjs": "^1.29.0",
