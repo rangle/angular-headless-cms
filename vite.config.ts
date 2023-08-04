@@ -21,6 +21,9 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     analog({
+      nitro: {
+        serveStatic: false,
+      },
       prerender: {
         routes: async () => {
           const pages = await client.getEntries({
@@ -28,8 +31,7 @@ export default defineConfig(({ mode }) => ({
           });
           const routes = pages.items.map((page) => page.fields['slug'] || '');
 
-          console.log('hello', routes);
-          return routes;
+          return routes as any;
         },
       },
     }),
