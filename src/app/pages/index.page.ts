@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { LoadResult, injectLoad } from '@analogjs/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 
-import { load } from './[slug].server';
+import { load } from './index.server';
 
 @Component({
   selector: 'app-home',
