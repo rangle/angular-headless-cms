@@ -54,11 +54,11 @@ export default class HomeComponent {
 
   getPage() {
     this.contentService.getPageBySlug(this.slug).subscribe({
-      next: (page) => {
+      next: (page: any) => {
         //  this.pageData = page.items;
-        console.log(page.items[0]?.fields?.sections);
         this.pageData = {
-          children: page.items[0]?.fields.sections.map((section) => {
+          header: '123',
+          children: page.items[0]?.fields.sections.map((section: any) => {
             return {
               name: section.sys.contentType.sys.id,
               componentData: section.fields,
