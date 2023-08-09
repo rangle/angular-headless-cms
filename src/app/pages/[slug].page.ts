@@ -1,8 +1,7 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RenderTemplateComponent } from '../../build-component/build-component.component';
-// import { ContentService } from '../services/content.service';
 import { Router } from '@angular/router';
-import { LoadResult, injectLoad } from '@analogjs/router';
+import { injectLoad } from '@analogjs/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 
 import { load } from './[slug].server';
