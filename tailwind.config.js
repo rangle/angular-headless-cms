@@ -4,9 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        mono: "var(--font-mono)",
-        sans: "var(--font-sans)",
-        serif: "var(--font-serif)",
+        sans: "Inter",
         times: "times",
       },
       colors: {
