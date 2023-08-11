@@ -1,8 +1,8 @@
 
 
 <a
-  [target]="target"
-  [href]="formattedUrl"
+  [target]="getTarget()"
+  [href]="getFormattedUrl()"
   *ngIf="hasPrimaryCta"
   class="cursor-pointer inline-block	rounded-full bg-primary-700 px-6 py-3 text-sm text-grey-50 outline-none hover:bg-primary-500 focus:ring-2 focus:ring-secondary-600 focus:ring-offset-2"
 >
@@ -10,8 +10,8 @@
 </a>
 
 <a
-  [target]="target"
-  [href]="formattedUrl"
+  [target]="getTarget()"
+  [href]="getFormattedUrl()"
   *ngIf="!hasPrimaryCta"
   class="cursor-pointer text-secondary-600 underline transition hover:text-secondary-500 hover:no-underline"
 >

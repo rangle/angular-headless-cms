@@ -18,16 +18,19 @@ export class CtaComponent {
 
   isMailTo = (url: string) => /^mailto?/i.test(url);
   isHttp = (url: string) => /^http?/i.test(url);
-  isAnchor = /^#/i.test(this.url);
-  isExternal = this.isHttp(this.url) || this.isMailTo(this.url);
+  isAnchor = (url: string) => /^#/i.test(url);
+  isExternal = () => this.isHttp(this.url) || this.isMailTo(this.url);
 
-  formattedUrl = this.isExternal
-    ? this.url.startsWith('/') || this.isAnchor
-      ? this.url
-      : `/${this.url}`
-    : this.url.length > 0
-    ? this.url
-    : '/';
+  getFormattedUrl = () => {
+    if (this.isExternal()) {
+      return this.url.length > 0 ? this.url : '/';
+    } else {
+      return this.url.startsWith('/') || this.isAnchor(this.url)
+        ? this.url
+        : `/${this.url}`;
+    }
+  };
 
-  target = this.isMailTo(this.url) ? '_self' : '_blank';
+  getTarget = () =>
+    this.isMailTo(this.url) || this.isExternal() ? '_blank' : '_self';
 }
