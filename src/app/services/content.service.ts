@@ -12,6 +12,7 @@ const client = createClient({
 
 export const getPageBySlug = (slug: string) =>
   client.getEntries({
+    include: 2,
     content_type: 'page',
     'fields.slug': slug,
   });
@@ -25,6 +26,9 @@ export const transformContentfulData = (pageData: any) => {
         // Format image url
         if (section.fields[fieldName]?.sys?.type === 'Asset') {
           componentData[fieldName] = section.fields[fieldName].fields.file.url;
+          // Format nested component data
+        } else if (section.fields[fieldName]?.sys?.type === 'Entry') {
+          componentData[fieldName] = section.fields[fieldName]?.fields;
         } else {
           componentData[fieldName] = section.fields[fieldName];
         }
