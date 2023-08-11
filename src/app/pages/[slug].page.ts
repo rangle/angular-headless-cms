@@ -10,7 +10,7 @@ import { load } from './[slug].server';
   selector: 'app-page',
   standalone: true,
   imports: [RenderTemplateComponent],
-  template: `<app-render-template [components]="pageData().children" />`,
+  template: `<app-render-template [components]="pageData()" />`,
 })
 export default class HomeComponent {
   private readonly route = inject(Router);

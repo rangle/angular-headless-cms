@@ -24,6 +24,8 @@ import { CtaBannerComponent } from '../app/components/cta-banner/cta-banner.comp
 import { FeaturedTextComponent } from '../app/components/featured-text/featured-text.component';
 import { QuoteComponent } from '../app/components/quote/quote.component';
 import { FeaturedItemsComponent } from '../app/components/featured-items/featured-items.component';
+import { FooterComponent } from '../app/components/footer/footer.component';
+import { NavigationComponent } from '../app/components/navigation/navigation.component';
 
 type ComponentMap = {
   [name: string]: {
@@ -50,6 +52,12 @@ const _dynamicComponentMap: ComponentMap = {
   },
   featuredItems: {
     loadComponent: () => FeaturedItemsComponent,
+  },
+  footer: {
+    loadComponent: () => FooterComponent,
+  },
+  navigation: {
+    loadComponent: () => NavigationComponent,
   },
 };
 

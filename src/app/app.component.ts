@@ -8,10 +8,6 @@ import { NavigationComponent } from './components/navigation/navigation.componen
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, NavigationComponent, FooterComponent],
-  template: `
-    <app-navigation></app-navigation>
-    <router-outlet></router-outlet>
-    <app-footer></app-footer>
-  `,
+  template: `<router-outlet></router-outlet>`,
 })
 export class AppComponent {}
