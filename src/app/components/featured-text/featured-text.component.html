@@ -1,0 +1,22 @@
+<div [ngClass]="{'bg-primary-200': isDark, 'bg-secondary-100': !isDark}">
+  <div class="container mx-auto">
+    <div class="flex flex-col px-12 py-24 sm:gap-x-10 md:px-24 lg:flex-row lg:gap-x-12 xl:px-44 xl:py-44">
+      <h2
+        *ngIf="heading"
+        [ngClass]="{'text-grey-50': isDark, 'text-primary-700': !isDark}"
+        class="my-auto flex-1 font-times text-2xl xl:text-3xl"
+      >
+        <span class="block font-bold leading-tight xl:inline">
+          {{heading}}
+        </span>
+      </h2>
+      <div
+        *ngIf="body"
+        [ngClass]="{'text-grey-50': isDark, 'text-primary-700': !isDark}"
+        class="prose my-auto flex-1 pt-8 text-base lg:flex-[2_2_0%] lg:pt-0"
+      >
+        {{body}}
+      </div>
+    </div>
+  </div>
+</div>

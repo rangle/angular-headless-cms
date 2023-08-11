@@ -13,19 +13,19 @@
 
 @font-face {
   font-family: 'Inter';
-  src: url('./assets/fonts/Inter-Medium.ttf');
+  src: url('../fonts/Inter-Medium.ttf');
   font-weight: 500;
 }
 
 @font-face {
   font-family: 'Inter';
-  src: url('./assets/fonts/Inter-Bold.ttf');
+  src: url('../fonts/Inter-Bold.ttf');
   font-weight: 700;
 }
 
 @font-face {
   font-family: 'Inter';
-  src: url('./assets/fonts/Inter-ExtraBold.ttf');
+  src: url('../fonts/Inter-ExtraBold.ttf');
   font-weight: 800;
 }
 

@@ -20,6 +20,10 @@ import {
 
 import { MainHeroComponent } from '../app/components/main-hero/main-hero.component';
 import { MediaModuleComponent } from '../app/components/media-module/media-module.component';
+import { CtaBannerComponent } from '../app/components/cta-banner/cta-banner.component';
+import { FeaturedTextComponent } from '../app/components/featured-text/featured-text.component';
+import { QuoteComponent } from '../app/components/quote/quote.component';
+import { FeaturedItemsComponent } from '../app/components/featured-items/featured-items.component';
 
 type ComponentMap = {
   [name: string]: {
@@ -34,6 +38,18 @@ const _dynamicComponentMap: ComponentMap = {
   },
   mediaModule: {
     loadComponent: () => MediaModuleComponent,
+  },
+  ctaBanner: {
+    loadComponent: () => CtaBannerComponent,
+  },
+  featuredText: {
+    loadComponent: () => FeaturedTextComponent,
+  },
+  quote: {
+    loadComponent: () => QuoteComponent,
+  },
+  featuredItems: {
+    loadComponent: () => FeaturedItemsComponent,
   },
 };
 

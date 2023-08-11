@@ -29,6 +29,11 @@ export const transformContentfulData = (pageData: any) => {
           // Format nested component data
         } else if (section.fields[fieldName]?.sys?.type === 'Entry') {
           componentData[fieldName] = section.fields[fieldName]?.fields;
+          // Format an array of nested component data
+        } else if (section.fields[fieldName].constructor === Array) {
+          componentData[fieldName] = section.fields[fieldName].map(
+            (nestedComponent: any) => nestedComponent.fields
+          );
         } else {
           componentData[fieldName] = section.fields[fieldName];
         }
