@@ -1,4 +1,3 @@
-import { PageServerLoad } from '@analogjs/router';
 import {
   getPageBySlug,
   getNavigation,
@@ -6,10 +5,8 @@ import {
   transformContentfulData,
 } from '../services/content.service';
 
-export const load = async ({
-  params, // params/queryParams from the request
-}: PageServerLoad) => {
-  const pageData = await getPageBySlug(`/${params ? params['slug'] : ''}`);
+export const load = async () => {
+  const pageData = await getPageBySlug('/');
 
   const navigationData = await getNavigation();
   const footerData = await getFooter();
