@@ -1,11 +1,10 @@
 import {
-  Type,
   ComponentRef,
   Injectable,
   Injector,
-  NgModuleRef,
   ViewContainerRef,
   createNgModule,
+  ApplicationRef
 } from '@angular/core';
 
 import {
@@ -14,57 +13,57 @@ import {
   LoadedRenderItem,
   isComponentConstructor,
   isModuleConstructor,
-  DynamicComponent,
   DynamicItemConstructor,
 } from '../types/build-component.types';
 
-import { MainHeroComponent } from '../app/components/main-hero/main-hero.component';
-import { MediaModuleComponent } from '../app/components/media-module/media-module.component';
-import { CtaBannerComponent } from '../app/components/cta-banner/cta-banner.component';
-import { FeaturedTextComponent } from '../app/components/featured-text/featured-text.component';
-import { QuoteComponent } from '../app/components/quote/quote.component';
-import { FeaturedItemsComponent } from '../app/components/featured-items/featured-items.component';
-import { FooterComponent } from '../app/components/footer/footer.component';
-import { NavigationComponent } from '../app/components/navigation/navigation.component';
-
 type ComponentMap = {
   [name: string]: {
-    loadComponent: () => DynamicItemConstructor;
+    loadComponent: () => DynamicItemConstructor | Promise<DynamicItemConstructor>;
   };
 };
 
 const _dynamicComponentMap: ComponentMap = {
   // #6 component manifest object
   mainHero: {
-    loadComponent: () => MainHeroComponent,
+    loadComponent: () =>
+      import('../app/components/main-hero/main-hero.component').then(
+        (m) => m.MainHeroComponent
+      ),
   },
   mediaModule: {
-    loadComponent: () => MediaModuleComponent,
+    loadComponent: () => import('../app/components/media-module/media-module.component')
+      .then((m) => m.MediaModuleComponent),
   },
   ctaBanner: {
-    loadComponent: () => CtaBannerComponent,
+    loadComponent: () => import('../app/components/cta-banner/cta-banner.component')
+      .then((m) => m.CtaBannerComponent),
   },
   featuredText: {
-    loadComponent: () => FeaturedTextComponent,
+    loadComponent: () => import('../app/components/featured-text/featured-text.component')
+      .then((m) => m.FeaturedTextComponent),
   },
   quote: {
-    loadComponent: () => QuoteComponent,
+    loadComponent: () => import('../app/components/quote/quote.component')
+      .then((m) => m.QuoteComponent),
   },
   featuredItems: {
-    loadComponent: () => FeaturedItemsComponent,
+    loadComponent: () => import('../app/components/featured-items/featured-items.component')
+      .then((m) => m.FeaturedItemsComponent),
   },
   footer: {
-    loadComponent: () => FooterComponent,
+    loadComponent: () => import('../app/components/footer/footer.component')
+      .then((m) => m.FooterComponent),
   },
   navigation: {
-    loadComponent: () => NavigationComponent,
+    loadComponent: () => import('../app/components/navigation/navigation.component')
+      .then((m) => m.NavigationComponent),
   },
 };
 
 const dynamicComponentMap = new Map(Object.entries(_dynamicComponentMap));
 @Injectable({ providedIn: 'root' })
 export class DynamicComponentsService {
-  constructor(public injector: Injector) {}
+  constructor(public injector: Injector, private appRef: ApplicationRef) {}
 
   async loadComponentConstructor(name: string) {
     const loadedItem = dynamicComponentMap.get(name);
@@ -102,10 +101,13 @@ export class DynamicComponentsService {
         );
       componentRef = container.createComponent(renderItem.instance.entry, {
         ngModuleRef: renderItem,
+        environmentInjector: this.appRef.injector,
       });
       // if resolver data found apply to the component
     } else {
-      componentRef = container.createComponent(renderItem);
+      componentRef = container.createComponent(renderItem, {
+        environmentInjector: this.appRef.injector,
+      });
       resolverData =
         componentRef.instance.componentDataResolver &&
         componentRef.instance.componentDataResolver(
