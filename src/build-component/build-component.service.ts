@@ -77,7 +77,7 @@ export class DynamicComponentsService {
     if (isModuleConstructor(loadedComponentConstructor)) {
       return createNgModule<DynamicModule>(
         loadedComponentConstructor,
-        this.injector
+        this.appRef.injector
       );
     } else {
       // stand alone component

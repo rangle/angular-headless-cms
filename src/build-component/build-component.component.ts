@@ -58,7 +58,13 @@ export class RenderTemplateComponent implements OnChanges {
       });
 
     this.container?.clear(); // clear the container that holds the components
-    this.renderComponents(loadedComponentModules);
+
+    // need to wait for something, otherwise we still get the injector issue
+    // even with the environmentInjector set to appRef.injector
+    // just figuring out what the best thing to wait for is!
+    setTimeout(() => {
+      this.renderComponents(loadedComponentModules);
+    }, 1000);
   }
 
   async renderComponents(items: Promise<LoadedRenderItems>[]) {
